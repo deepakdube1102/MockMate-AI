@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f8fafc; /* Pale light slate */
+  color: #0f172a;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+  border-inline: none;
+  box-sizing: border-box;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+.glass-accent {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.04), rgba(76, 29, 149, 0.08));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #4f3df5, #6366f1, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4f3df5;
+}
+
+/* Hide scrollbars utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-none {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Bounce Subtle Animation for floating badges */
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 5s ease-in-out infinite;
+}
+
+/* Premium PDF Report Print Styles */
+@media print {
+  /* Hide the Sidebar, FloatingHeader, issue reports, navigation buttons, and accordion arrow elements */
+  aside,
+  header,
+  .no-print,
+  .no-print *,
+  button:not(.print-visible),
+  span.h-3.w-px {
+    display: none !important;
+  }
+
+  /* Reset main layouts and borders to fill full portrait pages */
+  body,
+  html,
+  #root,
+  main {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Target page size settings (A4) and margins */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 20mm 15mm 20mm;
+  }
+
+  /* Force background colors, colored badges, and chart shapes to render */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  /* Automatically expand all accordion drawers containing Q&As and grading feedbacks */
+  .print-expand-accordion {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Apply clean border separation for individual expanded drawers */
+  .print-accordion-border {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  /* Keep summaries and Strengths/Weaknesses sections from being awkwardly sliced in half across pages */
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Re-align grid panels in single file column list for clean vertical readability */
+  .print-grid-full {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
+
