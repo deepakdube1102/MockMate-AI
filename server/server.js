@@ -9,6 +9,10 @@ const PORT = process.env.PORT || 5000;
 // Connect to Database
 connectDB();
 
-app.listen(PORT, () => {
-  console.log(`🚀 MockMate Backend Server running on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 MockMate Backend Server running on port ${PORT}`);
+  });
+}
+
+export default app;
