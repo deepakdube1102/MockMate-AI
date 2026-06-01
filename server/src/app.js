@@ -9,8 +9,12 @@ import resumeRoutes from './routes/resumeRoutes.js';
 const app = express();
 
 // Middlewares
+const allowedOrigin = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.replace(/\/$/, '')
+  : 'http://localhost:5173';
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: allowedOrigin,
   credentials: true
 }));
 app.use(express.json());
