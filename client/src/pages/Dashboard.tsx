@@ -162,13 +162,28 @@ export const Dashboard: React.FC = () => {
     return (
       <div className="w-full max-w-md mx-auto flex flex-col min-h-screen bg-[#F8FAFC] pb-24 text-left pt-0">
         {/* Top Header */}
-        <header className="flex items-center justify-between px-5 py-4 bg-white border-b border-slate-100 sticky top-0 z-30">
-          <div className="flex items-center gap-1.5 flex-1 justify-center">
+        <header className="flex items-center justify-between px-4 py-3 bg-white border-b border-slate-100 sticky top-0 z-30">
+          {/* Left: User Profile Avatar to open sidebar */}
+          <button 
+            type="button" 
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-mobile-sidebar'))}
+            className="flex items-center justify-center p-1 focus:outline-none cursor-pointer"
+            title="Open Menu"
+          >
+            <img 
+              src={user?.avatar || 'https://api.dicebear.com/7.x/adventurer/svg?seed=Deepak'} 
+              alt="User profile" 
+              className="w-8 h-8 rounded-full object-cover border border-slate-150 shadow-sm active:scale-95 transition-all bg-slate-50"
+            />
+          </button>
+
+          <div className="flex items-center gap-1.5 flex-grow justify-center mr-1">
             <img src={moxHappy} alt="MockMate logo" className="w-7 h-7 object-contain" />
             <span className="text-lg font-black text-slate-800 tracking-tight">
               MockMate <span className="text-violet-600">AI</span>
             </span>
           </div>
+
           <button type="button" className="relative text-slate-600 hover:text-slate-900 transition-colors p-1 cursor-pointer">
             <Bell className="w-6 h-6" />
             <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white" />
