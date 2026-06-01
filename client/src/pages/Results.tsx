@@ -483,9 +483,9 @@ export const Results: React.FC = () => {
                           </div>
                         ) : (
                           <div className="mt-1 flex flex-col items-end">
-                            <span className="text-[10px] text-slate-400 font-semibold italic inline-flex items-center gap-1 leading-none mb-1 cursor-default">
+                            <span className="text-[10px] text-slate-400 font-semibold italic inline-flex items-center gap-1 leading-none mb-1 cursor-default" title="This session has not been submitted yet.">
                               <span>Pending</span>
-                              <HelpCircle className="w-3.5 h-3.5 text-slate-300 stroke-[2]" title="This session has not been submitted yet." />
+                              <HelpCircle className="w-3.5 h-3.5 text-slate-300 stroke-[2]" />
                             </span>
                             <button
                               onClick={() => navigate(`/interviews/${item._id}`)}
