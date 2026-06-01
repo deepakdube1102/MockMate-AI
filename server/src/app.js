@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 // Import Routes
 import authRoutes from './routes/authRoutes.js';
@@ -17,6 +18,28 @@ app.use(cors({
   origin: allowedOrigin,
   credentials: true
 }));
+
+// Database connection sync middleware for serverless cold starts
+app.use(async (req, res, next) => {
+  if (mongoose.connection.readyState === 2) {
+    console.log('⏳ MongoDB connection is in progress, waiting...');
+    await new Promise((resolve) => {
+      mongoose.connection.once('open', () => {
+        global.dbConnected = true;
+        resolve();
+      });
+      // Timeout fallback after 3.5 seconds
+      setTimeout(() => {
+        global.dbConnected = mongoose.connection.readyState === 1;
+        resolve();
+      }, 3500);
+    });
+  } else {
+    global.dbConnected = mongoose.connection.readyState === 1;
+  }
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
