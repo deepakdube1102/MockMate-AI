@@ -268,14 +268,14 @@ export const Landing: React.FC = () => {
           <div className="absolute top-1/2 right-4 w-40 h-40 rounded-full opacity-10 blur-2xl pointer-events-none" style={{ background: 'radial-gradient(circle, #a855f7, transparent)' }} />
 
           {/* Mobile Navbar */}
-          <header className="flex items-center justify-between px-5 pt-[calc(1.85rem+env(safe-area-inset-top))] pb-3 w-full max-w-md mx-auto z-30">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <img src={symbolLogo} alt="MockMate AI" className="h-15 w-auto object-contain" />
-              <span className="text-white font-black text-2xl tracking-tight">MockMate <span className="text-violet-400">AI</span></span>
+          <header className="flex items-center justify-between px-4 pt-[calc(1.2rem+env(safe-area-inset-top))] pb-2 w-full max-w-md mx-auto z-30">
+            <div className="flex items-center gap-1.5 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <img src={symbolLogo} alt="MockMate AI" className="h-10 w-auto object-contain animate-fade-in" />
+              <span className="text-white font-black text-lg tracking-tight">MockMate <span className="text-violet-400">AI</span></span>
             </div>
             <button
               onClick={() => navigate(user ? '/dashboard' : '/register')}
-              className="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold rounded-full shadow-lg shadow-violet-900/40 transition-all cursor-pointer"
+              className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-[11px] font-black rounded-full shadow-md shadow-violet-900/30 transition-all active:scale-95 cursor-pointer"
             >
               Get Started
             </button>
