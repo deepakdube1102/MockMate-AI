@@ -322,11 +322,6 @@ export const Register: React.FC = () => {
 
           {/* Middle Content */}
           <div className="my-auto z-20 max-w-md mx-auto flex flex-col justify-center items-start w-full transform -translate-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-violet-50 border border-violet-100 text-violet-600 text-xs font-extrabold rounded-full tracking-wide">
-              <Sparkles className="w-3.5 h-3.5 text-violet-500 fill-violet-500/10" />
-              Your AI Interview Coach
-            </div>
 
             {/* Heading */}
             <h1 className="text-[44px] font-black tracking-tight leading-[1.1] text-slate-900 mt-6">
